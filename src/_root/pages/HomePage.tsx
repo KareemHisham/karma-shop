@@ -1,6 +1,15 @@
+import { HeroSection, Features, Categories, BlackFriday, PopularProducts, Deal } from "@/components"
+
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+      <HeroSection />
+      <Features />
+      <Categories />
+      <BlackFriday />
+      <PopularProducts />
+      <Deal />
+    </>
   )
 }
 

@@ -14,12 +14,23 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { CiLogin } from "react-icons/ci";
 import { FaLock, FaDoorOpen, FaUserEdit } from "react-icons/fa";
+import { useEffect } from "react";
 
 
 
 const Navbar = () => {
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const navELement = document.getElementsByTagName("nav")[0];
+      if (window.scrollY > 100) {
+        navELement.classList.add("nav_translated")
+      } else {
+        navELement.classList.remove("nav_translated")
+      }
+    })
+  }, [])
   return (
-    <nav className="">
+    <nav className="fixed w-full top-10 left-[50%] -translate-x-[50%] bg-white shadow-md z-50 py-3" >
       <div className="container">
         <div className="flex items-center justify-between">
           <div>
@@ -28,9 +39,6 @@ const Navbar = () => {
           <ul className="flex gap-4 items-center">
             <li>
               <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/products">Products</NavLink>
             </li>
             <li>
               <NavLink to="/offers">Offers</NavLink>
