@@ -1,3 +1,7 @@
+import { useEffect } from "react"
+import { Link } from "react-router-dom"
+import { fetchCategories } from "@/lib/supabase/CategoriesAPI"
+
 import {
     Carousel,
     CarouselContent,
@@ -5,12 +9,19 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from 'embla-carousel-autoplay'
 import { CATEGORIES } from "@/constant"
-import { Link } from "react-router-dom"
 
 const Categories = () => {
     const sliderOpt = {
         loop: true,
     }
+
+    useEffect(() => {
+        const fetchCategoriesAPI = async () => {
+            await fetchCategories()
+        }
+        fetchCategoriesAPI()
+    }, [])
+
     return (
         <section className="py-4">
             <div className="container">

@@ -145,7 +145,8 @@ const imgs = {
     cloth1,
     cloth3,
     shoe2,
-    watch1
+    watch1,
+    shirts
 }
 
 

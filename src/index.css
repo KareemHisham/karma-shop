@@ -20,6 +20,9 @@
   .container {
     @apply container mx-auto px-7;
   }
+  button {
+    @apply cursor-pointer
+  }
 }
 .footer_titles {
   @apply text-primary font-bold text-center md:text-start
@@ -37,7 +40,7 @@
   @apply w-[90%] transition-all duration-700
 }
 .bg_gradient {
-  @apply bg-linear-to-r from-[#ffba00] to-[#ff6c00] p-2 rounded-[10px] w-fit text-white text-sm
+  @apply bg-linear-to-r from-[#ffba00] to-[#ff6c00] p-2 rounded-[10px] w-fit
 }
 .line {
   @apply after:content-[''] after:absolute after:left-[50%] after:-bottom-3 after:-translate-x-[50%] after:w-[60px] after:h-1 after:bg-primary
