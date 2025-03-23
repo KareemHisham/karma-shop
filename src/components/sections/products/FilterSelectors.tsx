@@ -14,7 +14,7 @@ const FilterSelectors = () => {
       <div className="container">
         <h2 className="font-bold text-xl mb-4 flex items-center gap-1">
           <span><CiFilter /></span>
-          <span className="text-gray">Filter</span>
+          <span className="text-dark">Filter</span>
         </h2>
         <div className="flex items-center gap-4">
 

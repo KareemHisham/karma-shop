@@ -5,6 +5,9 @@ import Footer from "@/components/layouts/footer/Footer";
 // Shared
 import ProductCard from "@/components/shared/ProductCard"
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb"
+import AppRouter from "@/components/shared/AppRouter"
+import Spinner from "@/components/shared/Spinner"
+import Heading from "@/components/shared/Heading"
 
 //Sections
 
@@ -21,10 +24,8 @@ import BlackFriday from "@/components/sections/homepage/BlackFriday"
 import FilterSelectors from "@/components/sections/products/FilterSelectors"
 import SideFilterCategories from "@/components/sections/products/SideFilterCategories"
 import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
-import ProductsContainer from "@/components/sections/products/ProductsContainer"
 
 // Product Details Page - Sections
-import Heading from "@/components/sections/productDetails/Heading"
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, ProductCard, CustomBreadcrumb, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, ProductsContainer, Heading, ProductInfo };
+export { Navbar, Footer, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, ProductInfo };

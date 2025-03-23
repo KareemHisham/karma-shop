@@ -7,9 +7,10 @@ interface ISliderContent {
 
 interface ICategory {
     id: number,
-    title: string,
+    name: string,
     image: string,
     prefix: string,
+    sub_product: string[]
 }
 
 interface IProduct {
@@ -23,7 +24,11 @@ interface IProduct {
     stock: number | null,
     isNew: boolean,
     SKU: string,
-    discount: number
+    discount: number,
+    sizes: string[],
+    colors: string[],
+    tags: string[],
+    brand: string
 }
 
 type IBreadcrum = {

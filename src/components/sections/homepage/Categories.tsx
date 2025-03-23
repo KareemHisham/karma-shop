@@ -1,33 +1,26 @@
-import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { fetchCategories } from "@/lib/supabase/CategoriesAPI"
-
+import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel"
 import Autoplay from 'embla-carousel-autoplay'
-import { CATEGORIES } from "@/constant"
+import { ICategory } from "@/constant/Interfaces"
+import Spinner from "@/components/shared/Spinner"
 
 const Categories = () => {
-    const sliderOpt = {
-        loop: true,
-    }
 
-    useEffect(() => {
-        const fetchCategoriesAPI = async () => {
-            await fetchCategories()
-        }
-        fetchCategoriesAPI()
-    }, [])
-
+    const { data: categories, isPending } = useGetCategoriesQuery();
+    if (isPending) return <Spinner />
     return (
         <section className="py-4">
             <div className="container">
                 <h2 className="relative text-center font-bold text-2xl line mb-20">Our Categories</h2>
                 <Carousel
-                    opts={sliderOpt}
+                    opts={{
+                        loop: true,
+                    }}
                     plugins={[
                         Autoplay({
                             delay: 3000
@@ -35,12 +28,12 @@ const Categories = () => {
                     ]}
                 >
                     <CarouselContent>
-                        {CATEGORIES.map(category => {
+                        {categories && categories?.map((category: ICategory) => {
                             return (
                                 <CarouselItem key={category.id} className="basis-1/4">
-                                    <Link to="" className="flex flex-col items-center">
-                                        <img src={category.image} alt={category.title} width={150} className=" rounded-full" />
-                                        <h2 className="text-center mt-4 text-md font-bold">{category.title}</h2>
+                                    <Link to={`/categories/products/${category.prefix}`} className="flex flex-col items-center">
+                                        <img src={category.image} alt={category.name} width={150} className=" rounded-full" loading="lazy" />
+                                        <h2 className="text-center mt-4 text-md font-bold">{category.name}</h2>
                                     </Link>
                                 </CarouselItem>
                             )

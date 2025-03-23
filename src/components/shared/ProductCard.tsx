@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Card,
   CardDescription,
@@ -5,32 +6,42 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { IProduct } from "@/constant/Interfaces"
 
-import { imgs } from "@/constant/index"
-import { Button } from "../ui/button"
-
-import { CiShoppingCart } from "react-icons/ci";
-import { GrView } from "react-icons/gr";
-
-const ProductCard = () => {
+const ProductCard = ({ product }: { product: IProduct }) => {
   return (
-    <Card className="p-4 border-stone-400 shadow-none transition-shadow duration-300 hover:shadow-[1px_1px_10px_1px_rgba(0,0,0,0.25)]">
-      <CardHeader>
-        <img src={imgs.shirts} alt="" loading="lazy" />
-      </CardHeader>
-      <CardTitle>
-        <p>Product Name</p>
-      </CardTitle>
-      <CardDescription>
-        Product Description
-      </CardDescription>
-      <CardFooter className="p-0 justify-center gap-4">
-        <Button className="bg-transparent cursor-pointer transition-all duration-500 border-1 border-primary"><CiShoppingCart /></Button>
-        <Button className="bg-transparent cursor-pointer transition-all duration-500 border-1 border-primary"><GrView /></Button>
+    <Card className="p-4 border-stone-400 shadow-none transition-shadow duration-300 hover:shadow-[1px_1px_10px_1px_rgba(0,0,0,0.25)] relative">
+
+      {product.discount && <Badge variant="destructive" className="absolute left-2 top-2">Sale {product.discount}%</Badge>}
+      {product.isNew &&  <Badge variant="default" className="absolute right-2 top-2">New Item</Badge>}
+
+      <Link to={`/products/${product.id}`} className="flex flex-col gap-4">
+        <CardHeader>
+          <img src={product.images[0]} alt={product.title} loading="lazy" width={200} />
+        </CardHeader>
+        <CardTitle className="truncate">
+          {product.title}
+        </CardTitle>
+        <CardDescription className="truncate">
+          {product.description}
+        </CardDescription>
+      </Link>
+      <CardFooter className="flex items-center justify-between">
+
+        {product.discount ? (
+          <div>
+            <span className="text-xl font-bold">${(product.price * product.discount) / 100} </span>
+            <span className="text-sm line-through text-red-600">${product.price}</span>
+          </div>
+        ) : (
+          <span className="text-xl font-bold">${product.price}</span>
+        )}
       </CardFooter>
     </Card>
-
   )
 }
 
 export default ProductCard
+
+
