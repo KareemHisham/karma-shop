@@ -1,6 +1,7 @@
 // Layouts
 import Navbar from "@/components/layouts/navbar/Navbar";
 import Footer from "@/components/layouts/footer/Footer";
+import Star from "@/components/layouts/Star";
 
 // Shared
 import ProductCard from "@/components/shared/ProductCard"
@@ -8,6 +9,7 @@ import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb"
 import AppRouter from "@/components/shared/AppRouter"
 import Spinner from "@/components/shared/Spinner"
 import Heading from "@/components/shared/Heading"
+import Rating from "@/components/shared/Rating"
 
 //Sections
 
@@ -28,4 +30,4 @@ import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
 // Product Details Page - Sections
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, ProductInfo };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo };
