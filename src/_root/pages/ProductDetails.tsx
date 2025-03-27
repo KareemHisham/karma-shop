@@ -7,7 +7,6 @@ const ProductDetails = () => {
                 <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: "Product Details", path: "" }]} />
             </Heading>
             <ProductInfo />
-
         </>
     )
 }

@@ -7,11 +7,7 @@ import shippingImg from "/public/assets/collection/shipping.svg"
 import paymentImg from "/public/assets/collection/payment.svg"
 import returnImg from "/public/assets/collection/return.svg"
 
-import bike from "/public/assets/categories/bike.jpg"
-import furniture from "/public/assets/categories/furniture.jpeg"
-import games from "/public/assets/categories/games.jpeg"
 import shirts from "/public/assets/categories/shirts.jpeg"
-import shoes from "/public/assets/categories/shoes.jpeg"
 
 import c1 from "/public/assets/products/c1.jpg"
 import c2 from "/public/assets/products/c2.jpg"
@@ -62,33 +58,6 @@ const OURFEATURES = [
         title: "Secure Payment",
         description: "Free Shipping on all order",
     },
-]
-const CATEGORIES = [
-    {
-        id: 1,
-        title: "Miscellaneous",
-        image: bike
-    },
-    {
-        id: 2,
-        title: "Shoes",
-        image: shoes
-    },
-    {
-        id: 3,
-        title: "Furniture",
-        image: furniture
-    },
-    {
-        id: 4,
-        title: "Electronics",
-        image: games
-    },
-    {
-        id: 5,
-        title: "Clothes",
-        image: shirts
-    }
 ]
 const PRODUCTS = [
     {
@@ -150,4 +119,4 @@ const imgs = {
 }
 
 
-export { SLIDERCONTENT, OURFEATURES, CATEGORIES, PRODUCTS, imgs }
+export { SLIDERCONTENT, OURFEATURES, PRODUCTS, imgs }

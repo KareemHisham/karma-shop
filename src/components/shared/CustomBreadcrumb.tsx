@@ -17,7 +17,7 @@ const CustomBreadcrumb = ({ breadcrumLinks }: IBreadcrum) => {
                             <BreadcrumbItem>
 
                                 {link.path ? (
-                                    <BreadcrumbLink href={link.path} className="flex items-center gap-1">
+                                    <BreadcrumbLink to={link.path} className="flex items-center gap-1">
                                         <span className={`${link.path && " border-b-2 border-primary"} font-bold`}>{link.title}</span>
                                         {!link.path ? "" : <FaAnglesRight />}
                                     </BreadcrumbLink>

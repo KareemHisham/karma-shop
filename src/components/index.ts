@@ -11,6 +11,9 @@ import Spinner from "@/components/shared/Spinner"
 import Heading from "@/components/shared/Heading"
 import Rating from "@/components/shared/Rating"
 
+// Forms
+import CartFrom from "@/components/forms/CartFrom"
+
 //Sections
 
 // HomePage Page - Sections
@@ -30,4 +33,4 @@ import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
 // Product Details Page - Sections
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo, CartFrom };

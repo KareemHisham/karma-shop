@@ -22,7 +22,7 @@ interface IProduct {
     cat_prefix: string,
     rating: number | null,
     stock: number | null,
-    isNew: boolean,
+    is_new: boolean,
     SKU: string,
     discount: number,
     sizes: string[],
