@@ -13,7 +13,10 @@ import Rating from "@/components/shared/Rating"
 
 // Forms
 import CartFrom from "@/components/forms/CartFrom"
-
+import LoginForm from "@/components/forms/LoginForm"
+import RegisterForm from "@/components/forms/RegisterForm"
+import HeadingForm from "@/components/forms/HeadingForm"
+import FooterForm from "@/components/forms/FooterForm"
 //Sections
 
 // HomePage Page - Sections
@@ -33,4 +36,4 @@ import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
 // Product Details Page - Sections
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo, CartFrom };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo, CartFrom, LoginForm, RegisterForm, HeadingForm, FooterForm };

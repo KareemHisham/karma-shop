@@ -99,7 +99,7 @@ const Navbar = () => {
                         </li>
                         <li>
                           <NavigationMenuLink asChild>
-                            <Link to="/register" className="flex items-center gap-2">
+                            <Link to="/signup" className="flex items-center gap-2">
                               <FaLock size={20} />
                               <span>Register</span>
                             </Link>

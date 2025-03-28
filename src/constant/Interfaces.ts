@@ -38,6 +38,16 @@ type IBreadcrum = {
     }[]
 }
 
+interface IHeadingForm {
+    title: string,
+    subTitle: string
+}
+interface IFooterForm {
+    title: string,
+    link: string,
+    linkTitle: string
+}
 
 
-export type { ISliderContent, ICategory, IProduct, IBreadcrum }
+
+export type { ISliderContent, ICategory, IProduct, IBreadcrum, IHeadingForm, IFooterForm }

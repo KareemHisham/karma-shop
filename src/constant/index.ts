@@ -19,6 +19,8 @@ import cloth3 from "/public/assets/products/cloth_3.jpg"
 import shoe2 from "/public/assets/products/shoe_2.jpg"
 import watch1 from "/public/assets/products/watch_1.jpg"
 
+import authBg from "/public/assets/collection/auth_bg.jpg"
+
 const SLIDERCONTENT = [
     {
         id: 1,
@@ -115,7 +117,8 @@ const imgs = {
     cloth3,
     shoe2,
     watch1,
-    shirts
+    shirts,
+    authBg
 }
 
 
