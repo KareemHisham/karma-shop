@@ -15,12 +15,12 @@ const registerSchemaValidation = z.object({
     password: z.object({
         password: z.string(),
         confirm: z.string(),
-      })
-      .refine((data) => data.password === data.confirm, {
-        message: "Passwords don't match",
-        path: ["confirm"], // path of error
-      }),
-    phone: z.number().min(10, { message: "Phone number is required" }),
+    })
+        .refine((data) => data.password === data.confirm, {
+            message: "Passwords don't match",
+            path: ["confirm"], // path of error
+        }),
+    phone: z.string().pipe(z.coerce.number({message:"Please enter numbers only"}).min(5, { message: "Phone number must contain at least 4 character(s)" })),
     address: z.string().min(1, { message: "Address is required" }),
 })
 

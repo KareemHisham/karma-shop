@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -13,8 +14,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
+import { Loader } from "@/components"
+import { useSigninMutation } from "@/lib/react-query/AuthQuery"
+import { toast } from "sonner"
 const LoginForm = () => {
+
+  const { mutate: signin, isPending, error } = useSigninMutation()
+  const navigate = useNavigate();
   // 1. Define your form.
   const form = useForm<z.infer<typeof loginSchemaValidation>>({
     resolver: zodResolver(loginSchemaValidation),
@@ -26,7 +32,30 @@ const LoginForm = () => {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof loginSchemaValidation>) {
-    console.log(values)
+
+    if (error) {
+      toast.error(error.message)
+      return false;
+    }
+
+    signin(
+      { email: values.email, password: values.password },
+      {
+        onSuccess: () => {
+          toast.success("Login successful")
+          form.reset();
+          navigate("/")
+        },
+        onError: (error: Error) => {
+          const errorMessage = error.message || "An unknown error occurred";
+          if (errorMessage.includes("Invalid credentials")) {
+            toast.error("Invalid email or password");
+          } else {
+            toast.error(errorMessage);
+          }
+        }
+      }
+    );
   }
   return (
     <Form {...form}>
@@ -58,7 +87,7 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full bg-transparent text-white border border-primary hover:bg-primary hover:text-dark transition-all duration-300 flex justify-center items-center">Login</Button>
+        <Button type="submit" className={`w-full bg-transparent text-white border border-primary hover:bg-primary hover:text-dark transition-all duration-300 flex justify-center items-center ${isPending ? "cursor-not-allowed" : ""}`} disabled={isPending}>{isPending && <Loader />}Login</Button>
       </form>
     </Form>
   )

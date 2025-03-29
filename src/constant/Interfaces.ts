@@ -31,13 +31,20 @@ interface IProduct {
     brand: string
 }
 
+interface IUser {
+    fullname: string,
+    email: string,
+    phone: number,
+    address: string,
+    accountID: string,
+}
+
 type IBreadcrum = {
     breadcrumLinks: {
         title: string;
         path: string;
     }[]
 }
-
 interface IHeadingForm {
     title: string,
     subTitle: string
@@ -49,5 +56,4 @@ interface IFooterForm {
 }
 
 
-
-export type { ISliderContent, ICategory, IProduct, IBreadcrum, IHeadingForm, IFooterForm }
+export type { ISliderContent, ICategory, IProduct, IUser, IBreadcrum, IHeadingForm, IFooterForm }

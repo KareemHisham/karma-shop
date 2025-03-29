@@ -10,6 +10,7 @@ import AppRouter from "@/components/shared/AppRouter"
 import Spinner from "@/components/shared/Spinner"
 import Heading from "@/components/shared/Heading"
 import Rating from "@/components/shared/Rating"
+import Loader from "@/components/shared/Loader"
 
 // Forms
 import CartFrom from "@/components/forms/CartFrom"
@@ -36,4 +37,4 @@ import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
 // Product Details Page - Sections
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, ProductInfo, CartFrom, LoginForm, RegisterForm, HeadingForm, FooterForm };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, CartFrom, LoginForm, RegisterForm, HeadingForm, FooterForm };
