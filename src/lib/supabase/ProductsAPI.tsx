@@ -46,3 +46,20 @@ export const fetchProductById = async (id: string): Promise<IProduct> => {
         throw new Error(error instanceof Error ? error.message : "Error fetching product")
     }
 }
+
+export const updateProductQuantity = async (id: number, stock: number): Promise<IProduct> => {
+    try {
+
+        const { data, error } = await supabase
+            .from('products')
+            .update({ stock: stock })
+            .eq('id', id)
+            .select()
+
+        if (error) throw error;
+
+        return data[0]
+    } catch (error) {
+        throw new Error(error instanceof Error ? error.message : "Error updating product")
+    }
+}

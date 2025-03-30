@@ -3,7 +3,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import { Error, HomePage, ProductDetails, ProductsPage } from "@/_root";
+import { Error, HomePage, ProductDetails, ProductsPage, CartPage } from "@/_root";
 import RootLayout from "@/_root/RootLayout";
 import { AuthLayout, LoginPage, RegisterPage } from "@/_auth";
 
@@ -42,6 +42,10 @@ const APPROUTER = createBrowserRouter([
                 path: "products/:id",
                 element: <ProductDetails />
             },
+            {
+                path: "cart",
+                element: <CartPage />
+            }
         ]
     }
 ]);

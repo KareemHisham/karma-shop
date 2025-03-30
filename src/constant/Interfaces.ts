@@ -28,7 +28,7 @@ interface IProduct {
     sizes: string[],
     colors: string[],
     tags: string[],
-    brand: string
+    brand_name: string
 }
 
 interface IUser {
@@ -37,6 +37,14 @@ interface IUser {
     phone: number,
     address: string,
     accountID: string,
+}
+
+interface ICartItems {
+    id: number,
+    productID: number,
+    quantity: number,
+    userID: string,
+    products:IProduct
 }
 
 type IBreadcrum = {
@@ -56,4 +64,4 @@ interface IFooterForm {
 }
 
 
-export type { ISliderContent, ICategory, IProduct, IUser, IBreadcrum, IHeadingForm, IFooterForm }
+export type { ISliderContent, ICategory, IProduct, IUser, ICartItems, IBreadcrum, IHeadingForm, IFooterForm }

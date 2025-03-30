@@ -4,7 +4,6 @@ import styles from "./style.module.css";
 const { errorContainer, four, zero, screen_reader_text, backHome } = styles;
 const Error = () => {
     const error = useRouteError();
-    console.log(error)
     let errorStatusText = "";
     if (isRouteErrorResponse(error)) {
         errorStatusText = error.statusText;

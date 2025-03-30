@@ -8,7 +8,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { CartFrom, Rating, Spinner } from "@/components";
+import { ProductForm, Rating, Spinner } from "@/components";
 import { toast } from "sonner"
 
 const ProductInfo = () => {
@@ -45,6 +45,7 @@ const ProductInfo = () => {
                     {/* Product Info */}
                     <div className="col-span-2">
                         <h1 className="font-bold text-md">{product?.title}</h1>
+                        <h2>Brand: {product?.brand_name}</h2>
                         <p className="my-4 text-sm leading-6 text-gray">{product?.description}</p>
                         <div className="mb-4">
                             <span>Price:</span>
@@ -72,8 +73,14 @@ const ProductInfo = () => {
                         <div className="my-4">
                             <Rating rate={product?.rating || 0} />
                         </div>
+                        <div className="mb-4">
+                            <span>Tags:</span>
+                            <ul className="flex items-center gap-3">
+                                {product?.tags && <li className="text-xs capitalize">{product?.tags.join(" - ")}</li>}
+                            </ul>
+                        </div>
                         {/* Form */}
-                        <CartFrom />
+                        <ProductForm product={product!} />
 
                     </div>
                 </div>

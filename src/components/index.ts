@@ -11,9 +11,10 @@ import Spinner from "@/components/shared/Spinner"
 import Heading from "@/components/shared/Heading"
 import Rating from "@/components/shared/Rating"
 import Loader from "@/components/shared/Loader"
+import EmptySection from "@/components/shared/EmptySection"
 
 // Forms
-import CartFrom from "@/components/forms/CartFrom"
+import ProductForm from "@/components/forms/ProductForm"
 import LoginForm from "@/components/forms/LoginForm"
 import RegisterForm from "@/components/forms/RegisterForm"
 import HeadingForm from "@/components/forms/HeadingForm"
@@ -37,4 +38,9 @@ import ProductsWrapper from "@/components/sections/products/ProductsWrapper"
 // Product Details Page - Sections
 import ProductInfo from "@/components/sections/productDetails/ProductInfo"
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, CartFrom, LoginForm, RegisterForm, HeadingForm, FooterForm };
+// Cart Page - Sections
+import CartDetails from "@/components/sections/cart/CartDetails"
+import CartTable from "@/components/sections/cart/CartTable"
+
+
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, ProductForm, LoginForm, RegisterForm, HeadingForm, FooterForm, CartDetails, CartTable, EmptySection };

@@ -39,7 +39,8 @@
   .form_control {
     @apply border-primary text-white
   }
-  .label_control{
+
+  .label_control {
     @apply text-white
   }
 }
@@ -72,7 +73,20 @@
   @apply after:content-[''] after:absolute after:left-[50%] after:-bottom-3 after:-translate-x-[50%] after:w-[60px] after:h-1 after:bg-primary
 }
 
+.table {
+  display: table;
+  width: 100%;
+}
 
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 10px;
+  text-align: left;
+}
 
 /* Spinner */
 .sk-circle {
