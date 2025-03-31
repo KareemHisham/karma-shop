@@ -21,6 +21,7 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import { toast } from "sonner";
 import { ICartItems, IProduct } from "@/constant/Interfaces";
 import { useQueryClient } from "@tanstack/react-query";
+import { handleQuantity } from "@/helpers";
 const ProductForm = ({ product }: { product: IProduct }) => {
 
     const { id } = useParams();
@@ -50,6 +51,7 @@ const ProductForm = ({ product }: { product: IProduct }) => {
 
         // check if the product is in the cart
         const isProductInCart = (cartItems as ICartItems[]).find(item => item.productID === +id!);
+
         if (isProductInCart) {
             // update the cart quantity
             updateCartQuantity({ productID: isProductInCart.productID, quantity: values.quantity }, {
@@ -76,22 +78,11 @@ const ProductForm = ({ product }: { product: IProduct }) => {
 
     }
 
-    const handleQuantity = (type: "increment" | "decrement") => {
-        if (type === "increment") {
-            form.setValue("quantity", form.getValues("quantity") + 1)
-        } else {
-            form.setValue("quantity", form.getValues("quantity") - 1)
-            if (form.getValues("quantity") < 1) {
-                form.setValue("quantity", 1)
-            }
-        }
-    }
-
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-center gap-6">
                 <div className="flex items-center gap-4">
-                    <Button type="button" onClick={() => handleQuantity("decrement")} disabled={product.stock! == 0} className={`${product.stock! == 0 ? "bg-red-700 text-white" : "bg-primary text-white"}`}><FaMinus /></Button>
+                    <Button type="button" onClick={() => handleQuantity("decrement", form)} disabled={product.stock! == 0} className={`${product.stock! == 0 ? "bg-red-700 text-white" : "bg-primary text-white"}`}><FaMinus /></Button>
                     <FormField
                         control={form.control}
                         name="quantity"
@@ -105,7 +96,7 @@ const ProductForm = ({ product }: { product: IProduct }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="button" onClick={() => handleQuantity("increment")} disabled={product.stock! == 0} className={`${product.stock! == 0 ? "bg-red-700 text-white" : "bg-primary text-white"}`}><FaPlus /></Button>
+                    <Button type="button" onClick={() => handleQuantity("increment", form)} disabled={product.stock! == 0} className={`${product.stock! == 0 ? "bg-red-700 text-white" : "bg-primary text-white"}`}><FaPlus /></Button>
                 </div>
                 <Button type="submit" disabled={isPending || product.stock! == 0} className={`${isPending ? "cursor-not-allowed" : ""} ${product.stock! == 0 ? "bg-red-700 text-white" : " bg-primary text-white"}`}>{isPending && (<Loader />)} {product.stock! == 0 ? "Out of stock" : "Add to cart"}</Button>
             </form>

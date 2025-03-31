@@ -45,7 +45,7 @@ export const fetchCartItemsAPI = async (): Promise<ICartItems[]> => {
     try {
         const { data: cart, error } = await supabase
             .from('cart')
-            .select('quantity,products(*)')
+            .select('quantity,productID,products(*)')
             .eq('userID', (await supabase.auth.getUser()).data.user?.id);
 
         if (error) throw new Error(error.message)

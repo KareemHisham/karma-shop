@@ -1,12 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useClearCartMutation, useDeleteCartItemMutation, useFetchCartItemsQuery } from "@/lib/react-query/CartQuery";
 import { Spinner, EmptySection, CartTable } from "@/components";
-import { ICartItemsWithProduct } from "@/constant/Interfaces";
 import { toast } from "sonner";
+import { ICartItems } from "@/constant/Interfaces";
 
 const CartDetails = () => {
 
-    const { data: cartItems, isPending, error } = useFetchCartItemsQuery(true);
+    const { data: cartItems, isPending, error } = useFetchCartItemsQuery();
     const { mutate: deleteItem, isPending: deleteItemPending } = useDeleteCartItemMutation()
     const { mutate: clearCart, isPending: clearCartPending } = useClearCartMutation()
     const queryClient = useQueryClient();
@@ -34,13 +34,13 @@ const CartDetails = () => {
     }
 
     if (isPending) return <Spinner />
-    if ((cartItems as unknown as ICartItemsWithProduct[])?.length === 0) return <EmptySection />
+    if ((cartItems as unknown as ICartItems[])?.length === 0) return <EmptySection />
 
     return (
         <section className="py-4">
             <div className="container">
 
-                {cartItems && (<CartTable cartItems={cartItems as unknown as ICartItemsWithProduct[]} handleDeleteItem={handleDeleteItem} deleteItemPending={deleteItemPending} clearCart={handleClearCart} clearCartPending={clearCartPending} />)}
+                {cartItems && (<CartTable cartItems={cartItems as unknown as ICartItems[]} handleDeleteItem={handleDeleteItem} deleteItemPending={deleteItemPending} clearCart={handleClearCart} clearCartPending={clearCartPending} />)}
             </div>
         </section>
     )
