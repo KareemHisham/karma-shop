@@ -11,7 +11,7 @@ export const fetchCategories = async (prefix?: string): Promise<ICategory[]> => 
 
         const { data: categories, error } = await query;
 
-        if (error) throw new Error;
+        if (error) throw new Error(error.message);
         return categories;
     } catch (error) {
         throw new Error(

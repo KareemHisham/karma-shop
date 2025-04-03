@@ -6,7 +6,10 @@ import { ICartItems } from "@/constant/Interfaces";
 import { Button } from "@/components/ui/button";
 import { FaTrash } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-
+import { useUpdateCartQuantityMutation } from "@/lib/react-query/CartQuery";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useUpdateProductQuantityQuery } from "@/lib/react-query/ProductsQuery";
 const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, clearCartPending }: { cartItems: ICartItems[], handleDeleteItem: (id: number) => void, deleteItemPending: boolean, clearCart: () => void, clearCartPending: boolean }) => {
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
         cartItems.reduce((acc, item) => ({
@@ -15,6 +18,9 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
         }), {})
     );
 
+    const { mutate: updateCartQuantity, isPending } = useUpdateCartQuantityMutation();
+    const { mutate: updateProductStock } = useUpdateProductQuantityQuery()
+    const queryClient = useQueryClient()
 
     const handleChangeQuantity = (type: "increament" | "decreament", productId: number, currentQuantity: number) => {
         if (type === "increament") {
@@ -28,6 +34,16 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                 [productId]: currentQuantity - 1
             }));
         }
+    }
+
+    const handleUpdateCartQuantity = (productId: number, quantity: number) => {
+        updateCartQuantity({ productID: productId, quantity }, {
+            onSuccess: () => {
+                queryClient.invalidateQueries({ queryKey: ['cart'] })
+                toast.success("Quantity updated to cart");
+                updateProductStock({ id: productId, stock: quantity })
+            }
+        })
     }
 
     return (
@@ -53,6 +69,7 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                                 <div className="table-cell text-lightGrey text-xs">$ {item.products.price}</div>
                                 <div className="table-cell">
                                     <div className="flex items-center gap-2">
+                                    {item.products.id}
                                         <Button
                                             type="button"
                                             onClick={() => handleChangeQuantity("decreament", item.products.id, currentQuantity)}
@@ -106,7 +123,7 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                 {/* Summary */}
                 <div className="mt-5 flex-1">
                     <h2 className="text-2xl font-bold text-gray">Cart Total</h2>
-                    <ul>
+                    <ul className="mb-4">
                         <li className="flex">
                             <span className="basis-1/2">Total</span>
                             <span className="basis-1/2">${cartItems.reduce((acc, item) => acc + (quantities[item.products.id] || item.quantity) * item.products.price, 0)}</span>
@@ -116,7 +133,10 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                             <span className="basis-1/2">{cartItems.reduce((acc, item) => acc + (quantities[item.products.id] || item.quantity), 0)}</span>
                         </li>
                     </ul>
-                    <Button className="mt-4 bg-transparent text-sm text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white">Checkout</Button>
+                    <Button className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white" onClick={() => handleUpdateCartQuantity(cartItems[0].products.id, quantities[cartItems[0].products.id] || cartItems[0].quantity)} disabled={isPending}>
+                        {isPending && <Loader />}
+                        Checkout
+                    </Button>
                 </div>
             </div>
 

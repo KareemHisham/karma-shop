@@ -18,7 +18,10 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
 
     if (error) toast.error(error.message)
 
-    const handleChangeSelected = (category: string) => setSelectedCategory(category)
+    const handleChangeSelected = (category: string) => {
+        setSelectedCategory(category)
+        setPaginate({ ...paginate, page: 1 })
+    }
 
     return (
         <section className="py-4">
@@ -39,7 +42,7 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
                 </div>
                 <div className="flex items-center justify-center gap-4 mt-7">
                     <Button variant="outline" onClick={() => setPaginate({ ...paginate, page: paginate.page - 1 })} disabled={paginate.page == 1}>{paginate.page}</Button>
-                    <Button variant="outline" onClick={() => setPaginate({ ...paginate, page: paginate.page + 1 })} disabled={products && products?.length < paginate.limit}>{paginate.page + 1}</Button>
+                    <Button variant="outline" onClick={() => setPaginate({ ...paginate, page: paginate.page + 1 })} disabled={products && products?.length < paginate.limit || isPending}>{paginate.page + 1}</Button>
                 </div>
             </div>
         </section >

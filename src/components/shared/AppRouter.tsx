@@ -3,7 +3,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import { Error, HomePage, ProductDetails, ProductsPage, CartPage } from "@/_root";
+import { Error, HomePage, ProductDetails, ProductsPage, CartPage,CategoriesPage } from "@/_root";
 import RootLayout from "@/_root/RootLayout";
 import { AuthLayout, LoginPage, RegisterPage } from "@/_auth";
 
@@ -37,6 +37,10 @@ const APPROUTER = createBrowserRouter([
             {
                 path: "categories/products/:prefix",
                 element: <ProductsPage />
+            },
+            {
+                path: "categories",
+                element: <CategoriesPage />
             },
             {
                 path: "products/:id",

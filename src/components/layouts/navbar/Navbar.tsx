@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom"
 import { useSignoutMutation } from "@/lib/react-query/AuthQuery";
 import { useGetUserQuery } from "@/lib/react-query/UserQuery";
-import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery";
 
 import { imgs } from "@/constant/index"
 import {
@@ -20,12 +19,10 @@ import { CiLogin } from "react-icons/ci";
 import { FaLock, FaDoorOpen, FaUserEdit } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { ICategory } from "@/constant/Interfaces";
 
 const Navbar = () => {
   const { mutate: signout } = useSignoutMutation();
   const { data: user } = useGetUserQuery();
-  const { data: categories } = useGetCategoriesQuery();
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -50,29 +47,11 @@ const Navbar = () => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/offers">Offers</NavLink>
-            </li>
+            </li> */}
             <li>
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
-                    <NavigationMenuContent className="bg-white">
-                      <ol className="p-1">
-                        {categories && categories.map((category: ICategory, i) =>
-                          <li key={i}>
-                            <NavigationMenuLink asChild>
-                              <Link to={`categories/products/${category.prefix}`} className="text-xs capitalize transition-all duration-300 hover:bg-primary hover:text-white rounded-md p-2">{category.name}</Link>
-                            </NavigationMenuLink>
-                          </li>
-                        )}
-                      </ol>
-
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
+            <NavLink to="/categories">Categories</NavLink>
             </li>
             {user && (
               <li>
