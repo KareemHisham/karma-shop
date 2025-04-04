@@ -35,6 +35,6 @@ export const useDeleteCartItemMutation = () => {
 
 export const useClearCartMutation = () => {
     return useMutation({
-        mutationFn: () => clearCartAPI(),
+        mutationFn: clearCartAPI,
     })
 }

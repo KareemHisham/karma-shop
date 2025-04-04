@@ -1,4 +1,4 @@
-import { SideFilterCategories, Spinner, ProductCard } from "@/components"
+import { SideFilterCategories, Spinner, ProductCard, EmptySection } from "@/components"
 import { Button } from "@/components/ui/button"
 import { IProduct } from "@/constant/Interfaces"
 import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
@@ -30,7 +30,7 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
                     <SideFilterCategories subListProducts={subListProducts!} handleChangeSelected={handleChangeSelected} selectedCategory={selectedCategory || ""} />
 
                     {products?.length === 0 && (
-                        <div className="bg-red-500 text-white p-2 rounded-md text-center w-full">No Items found</div>)}
+                        <EmptySection cart={false} />)}
 
                     {isPending ? <Spinner /> : (
                         <div className="grid grid-cols-3 gap-4">

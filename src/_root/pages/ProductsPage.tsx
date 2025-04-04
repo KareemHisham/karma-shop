@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
-import { Heading, FilterSelectors, ProductsWrapper } from "@/components"
+import { Heading, ProductsWrapper } from "@/components"
 import { CustomBreadcrumb } from "@/components/index"
 const ProductsPage = () => {
   const { prefix } = useParams();
@@ -18,7 +18,7 @@ const ProductsPage = () => {
       <Heading>
         <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: `${prefix?.toUpperCase()} PRODUCTS`, path: "" }]} />
       </Heading>
-      <FilterSelectors />
+      {/* <FilterSelectors /> */}
       <ProductsWrapper prefix={prefix!} />
     </>
   )

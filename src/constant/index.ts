@@ -22,7 +22,7 @@ import watch1 from "/public/assets/products/watch_1.jpg"
 import authBg from "/public/assets/collection/auth_bg.jpg"
 
 import emptyCart from "/public/assets/collection//416097823087Zero_Purchase.gif"
-
+import emptyProduct from "/public/assets/collection/emptyProduct.gif"
 const SLIDERCONTENT = [
     {
         id: 1,
@@ -121,7 +121,8 @@ const imgs = {
     watch1,
     shirts,
     authBg,
-    emptyCart
+    emptyCart,
+    emptyProduct
 }
 
 

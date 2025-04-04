@@ -1,9 +1,9 @@
 import { imgs } from "@/constant"
 
-const EmptySection = () => {
+const EmptySection = ({ cart = false }: { cart: boolean }) => {
     return (
         <div className="flex justify-center items-center">
-            <img src={imgs.emptyCart} alt="empty cart" width="400" loading="lazy" draggable={false} />
+            <img src={cart ? imgs.emptyCart : imgs.emptyProduct} alt="empty cart" width={`${cart ? "400" : "300"}`} loading="lazy" draggable={false} />
         </div>
     )
 }

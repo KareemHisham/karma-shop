@@ -24,17 +24,16 @@ const CartDetails = () => {
         })
     }
 
-    const handleClearCart = () => {
+    const handleClearCart = (): void => {
         clearCart(undefined, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: ['cart'] });
-                toast.success("Cart cleared")
             }
         })
     }
 
     if (isPending) return <Spinner />
-    if ((cartItems as unknown as ICartItems[])?.length === 0) return <EmptySection />
+    if ((cartItems as unknown as ICartItems[])?.length === 0) return <EmptySection cart={true} />
 
     return (
         <section className="py-4">

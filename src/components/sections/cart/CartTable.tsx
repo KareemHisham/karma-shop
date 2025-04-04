@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader } from "@/components";
+import { useQueryClient } from "@tanstack/react-query";
+
 import { Input } from "@/components/ui/input"
 import { ICartItems } from "@/constant/Interfaces";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+
+import { useUpdateCartQuantityMutation } from "@/lib/react-query/CartQuery";
+
 import { FaTrash } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { useUpdateCartQuantityMutation } from "@/lib/react-query/CartQuery";
-import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { useUpdateProductQuantityQuery } from "@/lib/react-query/ProductsQuery";
 const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, clearCartPending }: { cartItems: ICartItems[], handleDeleteItem: (id: number) => void, deleteItemPending: boolean, clearCart: () => void, clearCartPending: boolean }) => {
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
         cartItems.reduce((acc, item) => ({
@@ -18,8 +19,7 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
         }), {})
     );
 
-    const { mutate: updateCartQuantity, isPending } = useUpdateCartQuantityMutation();
-    const { mutate: updateProductStock } = useUpdateProductQuantityQuery()
+    const { mutate: updateCartQuantity } = useUpdateCartQuantityMutation();
     const queryClient = useQueryClient()
 
     const handleChangeQuantity = (type: "increament" | "decreament", productId: number, currentQuantity: number) => {
@@ -40,10 +40,10 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
         updateCartQuantity({ productID: productId, quantity }, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: ['cart'] })
-                toast.success("Quantity updated to cart");
-                updateProductStock({ id: productId, stock: quantity })
+                toast.success("Your order has sent successfully");
             }
-        })
+        });
+        clearCart();
     }
 
     return (
@@ -69,7 +69,6 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                                 <div className="table-cell text-lightGrey text-xs">$ {item.products.price}</div>
                                 <div className="table-cell">
                                     <div className="flex items-center gap-2">
-                                    {item.products.id}
                                         <Button
                                             type="button"
                                             onClick={() => handleChangeQuantity("decreament", item.products.id, currentQuantity)}
@@ -112,7 +111,6 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                 {/* Buttons */}
                 <div className="mt-5 flex items-center gap-2 flex-1">
                     <Button type="button" className="bg-transparent text-sm text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white" onClick={clearCart} disabled={clearCartPending}>
-                        {clearCartPending && <Loader />}
                         Clear Cart
                     </Button>
                     <Link to="/" className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white">
@@ -133,8 +131,7 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                             <span className="basis-1/2">{cartItems.reduce((acc, item) => acc + (quantities[item.products.id] || item.quantity), 0)}</span>
                         </li>
                     </ul>
-                    <Button className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white" onClick={() => handleUpdateCartQuantity(cartItems[0].products.id, quantities[cartItems[0].products.id] || cartItems[0].quantity)} disabled={isPending}>
-                        {isPending && <Loader />}
+                    <Button className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white" onClick={() => handleUpdateCartQuantity(cartItems[0].products.id, quantities[cartItems[0].products.id] || cartItems[0].quantity)} disabled={clearCartPending}>
                         Checkout
                     </Button>
                 </div>
