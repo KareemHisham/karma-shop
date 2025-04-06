@@ -26,9 +26,9 @@ const ProductInfo = () => {
     return (
         <section className="py-4">
             <div className="container">
-                <div className="grid grdi-cols-1 md:grid-cols-3 gap-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10 lg:gap-20">
                     {/* Product Images */}
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col items-center gap-3 mb-10 md:mb-0">
                         <img src={product?.images[0]} alt={product?.title} loading="lazy" width={300} className="rounded-lg" id="main_img" />
                         <Carousel >
                             <CarouselContent>
@@ -45,11 +45,12 @@ const ProductInfo = () => {
                     {/* Product Info */}
                     <div className="col-span-2">
                         <h1 className="font-bold text-md">{product?.title}</h1>
-                        <h2>Brand: {product?.brand_name}</h2>
-                        <p className="my-4 text-sm leading-6 text-gray">{product?.description}</p>
+                        {product?.brand_name && <h2>Brand: <span className="text-primary">{product?.brand_name}</span></h2>}
+                        {product?.description && <p className="my-4 text-sm leading-6 text-gray">{product?.description}</p>}
+
                         <div className="mb-4">
                             <span>Price:</span>
-                            {product?.discount ? (<div className="flex items-center gap-2"> <span className="font-bold text-2xl">${(product.price * product.discount) / 100}</span><span className="line-through text-xs text-red-700">${product?.price}</span></div>) : (<span>${product?.price}</span>)}
+                            {product?.discount ? (<div className="flex items-center gap-2"> <span className="font-bold text-md md:text-2xl">${(product.price * product.discount) / 100}</span><span className="line-through text-xs text-red-700">${product?.price}</span></div>) : (<span>${product?.price}</span>)}
                         </div>
                         {/* Colors */}
                         {product?.colors && (
