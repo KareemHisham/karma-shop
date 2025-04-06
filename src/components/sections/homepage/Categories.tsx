@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from 'embla-carousel-autoplay'
 import { ICategory } from "@/constant/Interfaces"
-import Spinner from "@/components/shared/Spinner"
+import {Spinner} from "@/components"
 
 const Categories = () => {
 
@@ -23,17 +23,19 @@ const Categories = () => {
                     }}
                     plugins={[
                         Autoplay({
-                            delay: 3000
+                            delay: 3000,
+                            stopOnFocusIn:false,
+                            stopOnInteraction:false,
                         })
                     ]}
                 >
                     <CarouselContent>
                         {categories && categories?.map((category: ICategory) => {
                             return (
-                                <CarouselItem key={category.id} className="basis-1/4">
+                                <CarouselItem key={category.id} className="basis-1/3 md:basis-1/4">
                                     <Link to={`/categories/products/${category.prefix}`} className="flex flex-col items-center">
                                         <img src={category.image} alt={category.name} width={150} className=" rounded-full" loading="lazy" />
-                                        <h2 className="text-center mt-4 text-md font-bold">{category.name}</h2>
+                                        <h2 className="text-center mt-4 text-xs md:text-md font-bold">{category.name}</h2>
                                     </Link>
                                 </CarouselItem>
                             )

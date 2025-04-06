@@ -3,8 +3,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
 import AutoScroll from 'embla-carousel-auto-scroll'
 
@@ -18,7 +16,7 @@ const PopularProducts = () => {
         <Carousel
           opts={{ loop: true }}
           plugins={[
-            AutoScroll({ playOnInit: true, stopOnInteraction: false })
+            AutoScroll({ playOnInit: true, stopOnInteraction: false,speed:.5 })
           ]}
         >
           <CarouselContent>
@@ -54,8 +52,6 @@ const PopularProducts = () => {
             </CarouselItem>
 
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
 
       </div>
