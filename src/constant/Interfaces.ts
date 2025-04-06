@@ -28,7 +28,8 @@ interface IProduct {
     sizes: string[],
     colors: string[],
     tags: string[],
-    brand_name: string
+    brand_name: string,
+    sub_product:string
 }
 
 interface IUser {

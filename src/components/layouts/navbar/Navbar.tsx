@@ -166,6 +166,8 @@ const Navbar = () => {
                       </li>
                     </>
                   )}
+                  {!user && 
+                  <>
                   <li>
                     <Link to="/login" className="flex items-center gap-2 text-white">
                       <CiLogin size={20} />
@@ -179,6 +181,9 @@ const Navbar = () => {
                       <span>Register</span>
                     </Link>
                   </li>
+                  
+                  </>
+                  }
                 </ul>
               </DrawerContent>
             </Drawer>

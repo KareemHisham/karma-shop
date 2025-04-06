@@ -7,17 +7,12 @@ import shippingImg from "/public/assets/collection/shipping.svg"
 import paymentImg from "/public/assets/collection/payment.svg"
 import returnImg from "/public/assets/collection/return.svg"
 
-import shirts from "/public/assets/categories/shirts.jpeg"
-
 import c1 from "/public/assets/products/c1.jpg"
 import c2 from "/public/assets/products/c2.jpg"
 import c3 from "/public/assets/products/c3.jpg"
 import c4 from "/public/assets/products/c4.jpg"
 import c5 from "/public/assets/collection/c5.jpg"
-import cloth1 from "/public/assets/products/cloth_1.jpg"
-import cloth3 from "/public/assets/products/cloth_3.jpg"
-import shoe2 from "/public/assets/products/shoe_2.jpg"
-import watch1 from "/public/assets/products/watch_1.jpg"
+import comingSoon from "/public/assets/collection/coming_soon.jpg"
 
 import authBg from "/public/assets/collection/auth_bg.jpg"
 
@@ -115,14 +110,10 @@ const imgs = {
     c3,
     c4,
     c5,
-    cloth1,
-    cloth3,
-    shoe2,
-    watch1,
-    shirts,
     authBg,
     emptyCart,
-    emptyProduct
+    emptyProduct,
+    comingSoon
 }
 
 

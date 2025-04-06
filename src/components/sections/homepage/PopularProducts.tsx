@@ -6,9 +6,12 @@ import {
 } from "@/components/ui/carousel"
 import AutoScroll from 'embla-carousel-auto-scroll'
 
-import { imgs } from "@/constant/index"
+import { useProductsQuery } from "@/lib/react-query/ProductsQuery"
+import { IProduct } from "@/constant/Interfaces"
 
 const PopularProducts = () => {
+
+  const { data: products } = useProductsQuery("fashion");
   return (
     <section className="py-4">
       <div className="container">
@@ -16,41 +19,15 @@ const PopularProducts = () => {
         <Carousel
           opts={{ loop: true }}
           plugins={[
-            AutoScroll({ playOnInit: true, stopOnInteraction: false,speed:.5 })
+            AutoScroll({ playOnInit: true, stopOnInteraction: false, speed: .5 })
           ]}
         >
           <CarouselContent>
-
-            <CarouselItem className=" basis-1/4">
-              <Link to="/products">
-                <img src={imgs.watch1} alt="Karma Products" width={300} />
+            {products && products?.slice(6).map((product: IProduct) => <CarouselItem key={product.id} className=" basis-1/4">
+              <Link to={`/categories/products/${product.cat_prefix}`}>
+                <img src={product.images[0]} alt={product.title} width={300} />
               </Link>
-            </CarouselItem>
-
-            <CarouselItem className=" basis-1/4">
-              <Link to="/products">
-                <img src={imgs.shoe2} alt="Karma Products" width={300} />
-              </Link>
-            </CarouselItem>
-
-            <CarouselItem className=" basis-1/4">
-              <Link to="/products">
-                <img src={imgs.cloth1} alt="Karma Products" width={300} />
-              </Link>
-            </CarouselItem>
-
-            <CarouselItem className=" basis-1/4">
-              <Link to="/products">
-                <img src={imgs.cloth3} alt="Karma Products" width={300} />
-              </Link>
-            </CarouselItem>
-
-            <CarouselItem className=" basis-1/4">
-              <Link to="/products">
-                <img src={imgs.cloth1} alt="Karma Products" width={300} />
-              </Link>
-            </CarouselItem>
-
+            </CarouselItem>)}
           </CarouselContent>
         </Carousel>
 
