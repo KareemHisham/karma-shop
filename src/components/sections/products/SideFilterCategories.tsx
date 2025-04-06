@@ -10,7 +10,7 @@ const SideFilterCategories = ({ subListProducts, handleChangeSelected, selectedC
         <span>Categories</span>
       </h2>
 
-      <ul className="flex flex-row md:flex-col gap-2 justify-center">
+      <ul className="flex flex-row md:flex-col gap-2 justify-center overflow-auto md:overflow-visible">
         < li >
           <Button className={`capitalize bg-transparent cursor-pointer transition-all duration-300 w-full ${selectedCategory === "" ? "bg-primary" : ""}`} onClick={() => handleChangeSelected("")}>all</Button>
         </ li>
