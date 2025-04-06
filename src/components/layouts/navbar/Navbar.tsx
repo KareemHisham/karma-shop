@@ -13,12 +13,21 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
+
 import { Button } from "@/components/ui/button";
 
 import { CiLogin } from "react-icons/ci";
 import { FaLock, FaDoorOpen, FaUserEdit } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import { FaBarsStaggered } from "react-icons/fa6";
+
 
 const Navbar = () => {
   const { mutate: signout } = useSignoutMutation();
@@ -43,7 +52,7 @@ const Navbar = () => {
           <div>
             <img src={imgs.karmaLogo} alt="Karma logo" width={137} loading="lazy" draggable={false} />
           </div>
-          <ul className="flex gap-4 items-center">
+          <ul className="gap-4 items-center hidden md:flex">
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
@@ -51,7 +60,7 @@ const Navbar = () => {
               <NavLink to="/offers">Offers</NavLink>
             </li> */}
             <li>
-            <NavLink to="/categories">Categories</NavLink>
+              <NavLink to="/categories">Categories</NavLink>
             </li>
             {user && (
               <li>
@@ -117,6 +126,63 @@ const Navbar = () => {
               </NavigationMenu>
             </li>
           </ul>
+
+          {/* Mobile Menu */}
+          <div className="md:hidden">
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Button variant="outline" className="border-primary"><FaBarsStaggered /></Button>
+              </DrawerTrigger>
+              <DrawerContent className="bg-dark">
+                <ul className="flex flex-col items-center gap-5 mx-auto py-10">
+                  <li>
+                    <NavLink to="/" className="text-white">Home</NavLink>
+                  </li>
+                  {/* <li>
+              <NavLink to="/offers">Offers</NavLink>
+            </li> */}
+                  <li>
+                    <NavLink to="/categories" className="text-white">Categories</NavLink>
+                  </li>
+                  {user && (
+                    <>
+                      <li>
+                        <NavLink to="/cart"  className="text-white flex items-center gap-2">
+                          <HiOutlineShoppingCart size={20} />
+                          <span>Cart</span>
+                        </NavLink>
+                      </li>
+                      <li>
+                        <Button onClick={() => signout()} className="flex items-center gap-2 bg-transparent text-white">
+                          <FaDoorOpen size={20} />
+                          <span>Logout</span>
+                        </Button>
+                      </li>
+                      <li>
+                        <Link to="/profile" className="flex items-center gap-2 text-white">
+                          <FaUserEdit size={20} />
+                          <span>Profile</span>
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  <li>
+                    <Link to="/login" className="flex items-center gap-2 text-white">
+                      <CiLogin size={20} />
+                      <span>SignIn</span>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="/signup" className="flex items-center gap-2 text-white">
+                      <FaLock size={20} />
+                      <span>Register</span>
+                    </Link>
+                  </li>
+                </ul>
+              </DrawerContent>
+            </Drawer>
+          </div>
 
         </div>
       </div>
