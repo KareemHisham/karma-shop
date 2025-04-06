@@ -26,14 +26,14 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
     return (
         <section className="py-4">
             <div className="container">
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <SideFilterCategories subListProducts={subListProducts!} handleChangeSelected={handleChangeSelected} selectedCategory={selectedCategory || ""} />
 
                     {products?.length === 0 && (
                         <EmptySection cart={false} />)}
 
                     {isPending ? <Spinner /> : (
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {products && products?.map((product: IProduct) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}

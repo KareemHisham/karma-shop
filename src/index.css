@@ -23,6 +23,9 @@
   .container {
     @apply container mx-auto px-7;
   }
+  img {
+    @apply max-w-full h-auto
+  }
 
   button {
     @apply cursor-pointer
