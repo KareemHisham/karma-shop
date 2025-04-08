@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/carousel"
 import { ProductForm, Rating, Spinner } from "@/components";
 import { toast } from "sonner"
+import useTitleHook from "@/hooks/TitleHook";
 
 const ProductInfo = () => {
     const { id } = useParams();
 
     const { data: product, isPending, error } = useProductByIdQuery(id as string);
+    useTitleHook(product?.title as string);
 
     if (error) toast.error(error.message)
 

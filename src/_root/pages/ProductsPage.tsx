@@ -2,7 +2,9 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
 import { Heading, ProductsWrapper } from "@/components"
 import { CustomBreadcrumb } from "@/components/index"
+import useTitleHook from "@/hooks/TitleHook"
 const ProductsPage = () => {
+  useTitleHook("Products");
   const { prefix } = useParams();
   const navigate = useNavigate()
   const { data: categories } = useGetCategoriesQuery(prefix!)

@@ -1,6 +1,7 @@
 import { CustomBreadcrumb, Heading, CartDetails } from "@/components"
-
+import useTitleHook from "@/hooks/TitleHook";
 const CartPage = () => {
+  useTitleHook("Cart");
   return (
     <>
       <Heading>
