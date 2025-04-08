@@ -1,6 +1,7 @@
 import { SideFilterCategories, Spinner, ProductCard, EmptySection } from "@/components"
 import { Button } from "@/components/ui/button"
 import { IProduct } from "@/constant/Interfaces"
+import AbortRequests from "@/hooks/AbortRequests"
 import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
 import { useProductsQuery } from "@/lib/react-query/ProductsQuery"
 import { useState } from "react"
@@ -22,6 +23,8 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
         setSelectedCategory(category)
         setPaginate({ ...paginate, page: 1 })
     }
+       //  Cancel Request after component unmounts       
+       AbortRequests("products")
 
     return (
         <section className="py-4">

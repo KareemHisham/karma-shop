@@ -25,6 +25,7 @@ const ProductInfo = () => {
     }
 
     if (isPending) return <Spinner />
+
     return (
         <section className="py-4">
             <div className="container">

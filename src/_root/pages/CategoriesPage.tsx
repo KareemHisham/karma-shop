@@ -4,11 +4,15 @@ import { CustomBreadcrumb, Heading, Spinner } from "@/components"
 import { ICategory } from "@/constant/Interfaces";
 import { toast } from "sonner";
 import useTitleHook from "@/hooks/TitleHook";
+import AbortRequests from "@/hooks/AbortRequests";
 const CategoriesPage = () => {
     useTitleHook("Categories");
     const { data: categories, isPending, error } = useGetCategoriesQuery();
     if (error) toast.error(error.message)
-    
+
+    //  Cancel Request after component unmounts       
+    AbortRequests("fetchCategories")
+
     return (
         <>
             <Heading>
