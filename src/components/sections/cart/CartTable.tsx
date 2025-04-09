@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { Input } from "@/components/ui/input"
@@ -12,6 +12,7 @@ import { useUpdateCartQuantityMutation } from "@/lib/react-query/CartQuery";
 import { FaTrash } from "react-icons/fa";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, clearCartPending }: { cartItems: ICartItems[], handleDeleteItem: (id: number) => void, deleteItemPending: boolean, clearCart: () => void, clearCartPending: boolean }) => {
+    const navigate = useNavigate();
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
         cartItems.reduce((acc, item) => ({
             ...acc,
@@ -40,10 +41,10 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
         updateCartQuantity({ productID: productId, quantity }, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: ['cart'] })
-                toast.success("Your order has sent successfully");
+                toast.success("Your order has updated successfully");
+                navigate('/checkout')
             }
         });
-        clearCart();
     }
 
     return (
@@ -138,6 +139,7 @@ const CartTable = ({ cartItems, handleDeleteItem, deleteItemPending, clearCart, 
                     <Button className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white" onClick={() => handleUpdateCartQuantity(cartItems[0].products.id, quantities[cartItems[0].products.id] || cartItems[0].quantity)} disabled={clearCartPending}>
                         Checkout
                     </Button>
+                    {/* <Link to="/checkout" className="py-2 px-4 rounded-md text-sm font-medium bg-transparent text-lightGrey border-primary border transition-all duration-300 hover:bg-primary hover:text-white">Checkout</Link> */}
                 </div>
             </div>
 

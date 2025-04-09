@@ -26,3 +26,19 @@ export const getUserAPI = async () => {
         throw new Error(error instanceof Error ? error.message : 'An unknown error occurred');
     }
 }
+
+export const getCurrentUserAPI = async ():Promise<IUser> => {
+    const userID = (await supabase.auth.getUser()).data.user?.id
+    try {
+        const { data: user, error } = await supabase
+            .from('users')
+            .select("*")
+            .eq("accountID", userID);
+
+        if (error) throw new Error(error.message);
+
+        return user[0]
+    } catch (error) {
+        throw new Error(error instanceof Error ? error.message : 'An unknown error occurred')
+    }
+}

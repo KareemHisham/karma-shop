@@ -32,14 +32,17 @@ const CartDetails = () => {
         })
     }
 
-    if (isPending) return <Spinner />
     if ((cartItems as unknown as ICartItems[])?.length === 0) return <EmptySection cart={true} />
 
     return (
-        <section className="py-4">
+        <section className="py-4 min-h-96 relative">
             <div className="container">
-            <h1 className="text-2xl font-bold text-gray">Cart Items</h1>
-                {cartItems && (<CartTable cartItems={cartItems as unknown as ICartItems[]} handleDeleteItem={handleDeleteItem} deleteItemPending={deleteItemPending} clearCart={handleClearCart} clearCartPending={clearCartPending} />)}
+                {isPending ? <Spinner /> : (
+                    <>
+                        <h1 className="text-2xl font-bold text-gray">Cart Items</h1>
+                        {cartItems && (<CartTable cartItems={cartItems as unknown as ICartItems[]} handleDeleteItem={handleDeleteItem} deleteItemPending={deleteItemPending} clearCart={handleClearCart} clearCartPending={clearCartPending} />)}
+                    </>
+                )}
             </div>
         </section>
     )

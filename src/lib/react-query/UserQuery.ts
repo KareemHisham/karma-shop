@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query"
-import { createUserAPI, getUserAPI } from "../supabase/UserAPI"
+import { createUserAPI, getCurrentUserAPI, getUserAPI } from "../supabase/UserAPI"
 import { IUser } from "@/constant/Interfaces"
 
 export const useCreateUserMutation = () => {
@@ -19,6 +19,13 @@ export const useGetUserQuery = () => {
     return useQuery({
         queryKey: ['user'],
         queryFn: () => getUserAPI()
+    })
+}
+
+export const UseGetCurrentUser = () => {
+    return useQuery({
+        queryKey: ["currentUser"],
+        queryFn: getCurrentUserAPI
     })
 }
 

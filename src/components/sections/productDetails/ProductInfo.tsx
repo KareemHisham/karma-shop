@@ -24,11 +24,10 @@ const ProductInfo = () => {
         document.getElementById("main_img")?.setAttribute("src", img)
     }
 
-    if (isPending) return <Spinner />
-
     return (
-        <section className="py-4">
+        <section className="py-4 relative  min-h-96">
             <div className="container">
+                {isPending ? <Spinner />: (
                 <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10 lg:gap-20">
                     {/* Product Images */}
                     <div className="flex flex-col items-center gap-3 mb-10 md:mb-0">
@@ -88,6 +87,8 @@ const ProductInfo = () => {
 
                     </div>
                 </div>
+
+                )}
             </div>
         </section>
     )

@@ -57,7 +57,6 @@ export const updateProductQuantity = async (id: number, stock: number): Promise<
             .select()
 
         if (error) throw error;
-
         return data[0]
     } catch (error) {
         throw new Error(error instanceof Error ? error.message : "Error updating product")

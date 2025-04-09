@@ -5,7 +5,7 @@ const CartPage = () => {
   return (
     <>
       <Heading>
-        <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: "Cart", path: "" }]} />
+        <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: "Categories", path: "/categories" }, { title: "Cart", path: "" }]} />
       </Heading>
       <CartDetails />
     </>

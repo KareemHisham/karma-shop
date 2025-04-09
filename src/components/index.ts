@@ -19,6 +19,7 @@ import LoginForm from "@/components/forms/LoginForm"
 import RegisterForm from "@/components/forms/RegisterForm"
 import HeadingForm from "@/components/forms/HeadingForm"
 import FooterForm from "@/components/forms/FooterForm"
+import CheckoutForm from "@/components/forms/CheckoutForm"
 //Sections
 
 // HomePage Page - Sections
@@ -43,4 +44,4 @@ import CartDetails from "@/components/sections/cart/CartDetails"
 import CartTable from "@/components/sections/cart/CartTable"
 
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, ProductForm, LoginForm, RegisterForm, HeadingForm, FooterForm, CartDetails, CartTable, EmptySection };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, ProductForm, LoginForm, RegisterForm, HeadingForm, FooterForm, CheckoutForm, CartDetails, CartTable, EmptySection };

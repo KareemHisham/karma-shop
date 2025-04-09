@@ -18,7 +18,7 @@ const ProductsPage = () => {
   return (
     <>
       <Heading>
-        <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: `${prefix?.toUpperCase()} PRODUCTS`, path: "" }]} />
+        <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" },{title:"Categories",path:"/categories"}, { title: `${prefix?.toUpperCase()} PRODUCTS`, path: "" }]} />
       </Heading>
       {/* <FilterSelectors /> */}
       <ProductsWrapper prefix={prefix!} />
