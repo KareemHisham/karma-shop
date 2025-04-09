@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useGetCategoriesQuery } from "@/lib/react-query/CategoriesQuery"
 import { CustomBreadcrumb, Heading, Spinner } from "@/components"
 import { ICategory } from "@/constant/Interfaces";
+import {imgs} from "@/constant/index"
 import { toast } from "sonner";
 import useTitleHook from "@/hooks/TitleHook";
 import AbortRequests from "@/hooks/AbortRequests";
@@ -18,9 +19,11 @@ const CategoriesPage = () => {
             <Heading>
                 <CustomBreadcrumb breadcrumLinks={[{ title: "Home", path: "/" }, { title: "Categories", path: "" }]} />
             </Heading>
-            {isPending ? <Spinner /> : (
-                <section className="py-4">
-                    <div className="container">
+
+            <section className="py-4 min-h-96 relative">
+                <div className="container">
+                    {error && <img src={imgs.wrongImg} alt="wrong" loading="lazy" width={700} className="block mx-auto" />}
+                    {isPending ? <Spinner /> : (
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
                             {categories && categories?.map((category: ICategory) => {
                                 return (
@@ -34,9 +37,11 @@ const CategoriesPage = () => {
                             })}
 
                         </div>
-                    </div>
-                </section>
-            )}
+
+                    )}
+
+                </div>
+            </section>
 
         </>
     )

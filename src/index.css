@@ -96,7 +96,10 @@
   margin: 10px auto;
   width: 40px;
   height: 40px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
 }
 
 .sk-circle .sk-child {

@@ -29,7 +29,7 @@ const ProductsWrapper = ({ prefix }: { prefix: string }) => {
     return (
         <section className="py-4">
             <div className="container">
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
+                <div className="flex flex-col md:flex-row md:items-start gap-4 justify-between">
                     <SideFilterCategories subListProducts={subListProducts!} handleChangeSelected={handleChangeSelected} selectedCategory={selectedCategory || ""} />
 
                     {products?.length === 0 && (

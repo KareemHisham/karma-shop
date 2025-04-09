@@ -18,6 +18,8 @@ import authBg from "/public/assets/collection/auth_bg.jpg"
 
 import emptyCart from "/public/assets/collection//416097823087Zero_Purchase.gif"
 import emptyProduct from "/public/assets/collection/emptyProduct.gif"
+import wrongImg from "/public/assets/collection/wrong.jpg"
+
 const SLIDERCONTENT = [
     {
         id: 1,
@@ -113,7 +115,8 @@ const imgs = {
     authBg,
     emptyCart,
     emptyProduct,
-    comingSoon
+    comingSoon,
+    wrongImg
 }
 
 
