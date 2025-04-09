@@ -17,7 +17,7 @@ const CheckoutPage = () => {
     if (error || cartItems?.length === 0) {
         toast.warning("Your cart is Empty");
         return (
-            <img src={imgs.emptyCart} alt="wrong" loading="lazy" width={700} className="block mx-auto" />
+            <img src={imgs.emptyCart} alt="wrong" loading="lazy" width={400} className="block mx-auto" />
         )
     }
 
