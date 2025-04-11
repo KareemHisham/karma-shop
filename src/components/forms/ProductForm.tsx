@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -22,12 +22,17 @@ import { toast } from "sonner";
 import { ICartItems, IProduct } from "@/constant/Interfaces";
 import { useQueryClient } from "@tanstack/react-query";
 import { handleQuantity } from "@/helpers";
+import { useGetUserQuery } from "@/lib/react-query/UserQuery";
 const ProductForm = ({ product }: { product: IProduct }) => {
 
     const { id } = useParams();
-    const { mutate: addToCart, isPending, error } = useCartMutation();
+    const navigate = useNavigate();
+    const { mutate: addToCart, isPending } = useCartMutation();
     const { mutate: updateCartQuantity } = useUpdateCartQuantityMutation();
     const { data: cartItems } = useFetchCartItemsQuery();
+    const { data: userData } = useGetUserQuery()
+
+    console.log(userData)
 
     const queryClient = useQueryClient()
 
@@ -41,7 +46,11 @@ const ProductForm = ({ product }: { product: IProduct }) => {
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof cartSchemaValidation>) {
-        if (error) toast.error(error.message)
+        if (userData === null) {
+            toast.error("Please Login");
+            navigate("/login")
+            return;
+        }
 
         // check the product stock
         if (product.stock! < values.quantity) {
