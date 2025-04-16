@@ -23,7 +23,7 @@ export const useGetUserQuery = () => {
 }
 
 export const UseGetCurrentUser = () => {
-    return useQuery({
+    return useQuery<IUser | null>({
         queryKey: ["currentUser"],
         queryFn: getCurrentUserAPI
     })

@@ -27,8 +27,12 @@ export const getUserAPI = async () => {
     }
 }
 
-export const getCurrentUserAPI = async ():Promise<IUser> => {
+export const getCurrentUserAPI = async (): Promise<IUser> => {
     const userID = (await supabase.auth.getUser()).data.user?.id
+
+    if (!userID) {
+        throw new Error("No logged-in user");
+    }
     try {
         const { data: user, error } = await supabase
             .from('users')

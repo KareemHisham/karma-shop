@@ -12,6 +12,7 @@ import Heading from "@/components/shared/Heading"
 import Rating from "@/components/shared/Rating"
 import Loader from "@/components/shared/Loader"
 import EmptySection from "@/components/shared/EmptySection"
+import ProtectRoutes from "@/components/shared/ProtectRoutes"
 
 // Forms
 import ProductForm from "@/components/forms/ProductForm"
@@ -44,4 +45,4 @@ import CartDetails from "@/components/sections/cart/CartDetails"
 import CartTable from "@/components/sections/cart/CartTable"
 
 
-export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, ProductForm, LoginForm, RegisterForm, HeadingForm, FooterForm, CheckoutForm, CartDetails, CartTable, EmptySection };
+export { Navbar, Footer, Star, ProductCard, CustomBreadcrumb, AppRouter, Spinner, HeroSection, SliderContent, Features, Categories, PopularProducts, Deal, BlackFriday, FilterSelectors, SideFilterCategories, ProductsWrapper, Heading, Rating, Loader, ProductInfo, ProductForm, LoginForm, RegisterForm, HeadingForm, FooterForm, CheckoutForm, CartDetails, CartTable, EmptySection, ProtectRoutes };

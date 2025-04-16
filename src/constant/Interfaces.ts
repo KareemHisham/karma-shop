@@ -29,7 +29,7 @@ interface IProduct {
     colors: string[],
     tags: string[],
     brand_name: string,
-    sub_product:string
+    sub_product: string
 }
 
 interface IUser {
@@ -45,7 +45,7 @@ interface ICartItems {
     productID: number,
     quantity: number,
     userID: string,
-    products:IProduct
+    products: IProduct
 }
 
 type IBreadcrum = {
@@ -63,6 +63,11 @@ interface IFooterForm {
     link: string,
     linkTitle: string
 }
+interface SideFilterCategoriesProps {
+    subListProducts: ICategory[];
+    handleChangeSelected: (selectedCategory: string) => void;
+    selectedCategory: string;
+}
 
 
-export type { ISliderContent, ICategory, IProduct, IUser, ICartItems, IBreadcrum, IHeadingForm, IFooterForm }
+export type { ISliderContent, ICategory, IProduct, IUser, ICartItems, IBreadcrum, IHeadingForm, IFooterForm, SideFilterCategoriesProps }
