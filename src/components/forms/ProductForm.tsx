@@ -32,8 +32,6 @@ const ProductForm = ({ product }: { product: IProduct }) => {
     const { data: cartItems } = useFetchCartItemsQuery();
     const { data: userData } = useGetUserQuery()
 
-    console.log(userData)
-
     const queryClient = useQueryClient()
 
     // 1. Define your form.
