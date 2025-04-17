@@ -1,17 +1,18 @@
+import { useGetUserQuery } from "@/lib/react-query/UserQuery";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { UseGetCurrentUser } from "@/lib/react-query/UserQuery";
+import { Outlet, useNavigate } from "react-router-dom";
 
-const ProtectRoutes = ({ children }: { children: React.ReactNode }) => {
-    const { data: user } = UseGetCurrentUser();
+const ProtectRoutes = () => {
+    const { data: user, isPending, isError } = useGetUserQuery();
     const navigate = useNavigate();
+
     useEffect(() => {
-        if (!user) {
-            navigate("/login")
+        if (!isPending && (!user || isError)) {
+            navigate("/login", { replace: true });
         }
-    }, [user, navigate])
+    }, [user, isPending, isError, navigate]);
 
-    return user ? children : null;
-}
+    return user ? <Outlet /> : null;
+};
 
-export default ProtectRoutes
+export default ProtectRoutes;

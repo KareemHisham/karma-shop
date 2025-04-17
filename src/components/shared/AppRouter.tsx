@@ -43,31 +43,37 @@ const RootRoutes = {
             element: <HomePage />
         },
         {
-            path: "categories/products/:prefix",
-            element: <ProductsPage />
-        },
-        {
             path: "categories",
             element: <CategoriesPage />
+        },
+        {
+            path: "categories/products/:prefix",
+            element: <ProductsPage />
         },
         {
             path: "products/:id",
             element: <ProductDetails />
         },
         {
-            path: "cart",
-            element: <ProtectRoutes><CartPage /></ProtectRoutes>
-        },
-        {
-            path: "checkout",
-            element: <ProtectRoutes><CheckoutPage /></ProtectRoutes>
-        },
-        {
-            path: "profile",
-            element: <ProtectRoutes><ProfilePage /></ProtectRoutes>
+            element: <ProtectRoutes />,
+            children: [
+                {
+                    path: "cart",
+                    element: <CartPage />
+                },
+                {
+                    path: "checkout",
+                    element: <CheckoutPage />
+                },
+                {
+                    path: "profile",
+                    element: <ProfilePage />
+                }
+            ]
         }
     ]
 }
+
 
 const APPROUTER = createBrowserRouter([
     {

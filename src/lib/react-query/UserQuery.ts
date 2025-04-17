@@ -25,7 +25,9 @@ export const useGetUserQuery = () => {
 export const UseGetCurrentUser = () => {
     return useQuery<IUser | null>({
         queryKey: ["currentUser"],
-        queryFn: getCurrentUserAPI
+        queryFn: getCurrentUserAPI,
+        staleTime: 1000 * 60 * 5,
+        refetchOnWindowFocus: false
     })
 }
 
